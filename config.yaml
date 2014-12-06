@@ -1,0 +1,112 @@
+wp:
+    service:
+        image: baseboxorg/wordpress
+        name: wp
+        port: "80"
+    images:
+        - ubuntu
+        - mysql
+        - apache
+        - php-apache
+        - wordpress
+    links:
+        - image: baseboxorg/mysql
+          name: mysql-wp
+          alias: mysql
+
+jenkins:
+    service:
+        image: baseboxorg/jenkins
+        name: jenkins
+        port: "8080"
+    images:
+        - ubuntu
+        - jdk6-oracle
+        - jenkins
+
+redis:
+    service:
+        image: baseboxorg/redis
+        name: redis
+        port: "6379"
+    images:
+        - ubuntu
+        - redis
+
+mongo:
+    service:
+        image: baseboxorg/mongodb
+        name: mongodb
+        port: "27017"
+    images:
+        - ubuntu
+        - mongodb
+		
+mongo-test:
+    service:
+        image: baseboxorg/mongodb
+        name: mongodb
+        port: "27017"
+    images:
+        - ubuntu-debootstrap
+        - mongodb
+
+rails:
+    service:
+        image: baseboxorg/rails-sample-app
+        name: rails-sample-app
+        port: "3000"
+    images:
+        - ubuntu
+        - ruby
+        - ruby-rails
+        - rails-sample-app
+
+ssg:
+    service:
+        image: baseboxorg/ssg
+        name: ssg
+        port: "3000"
+    images:
+        - ubuntu
+        - postgres
+        - ruby
+        - ruby-rails
+        - ssg
+    links:
+        - image: baseboxorg/postgres
+          name: postgres-ssg
+          alias: postgres
+
+ghost:
+    service:
+        image: baseboxorg/ghost
+        name: ghost
+        port: "2368"
+    images:
+        - ubuntu
+        - nodejs
+        - ghost
+
+hipache:
+    service:
+        image: baseboxorg/hipache
+        name: hipache
+        port: "80"
+    images:
+        - ubuntu
+        - redis
+        - nodejs
+        - hipache
+    links:
+        - image: baseboxorg/redis
+          name: redis-hipache
+          alias: redis
+
+abh-jmeter:
+    images:
+        - ubuntu
+        - jdk6-oracle
+        - maven3
+        - jmeter-2.9-abh
+
